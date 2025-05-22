@@ -240,12 +240,31 @@ final class DockObserver {
                     pendingShows.insert(currentAppInfo.processIdentifier)
                     lastAppUnderMouse = currentAppInfo
 
-                    guard let app = currentAppInfo.app() else {
+                    // Collect windows from all instances of this app by bundle ID
+                    var appsToFetchWindowsFrom: [NSRunningApplication] = []
+                    if let bundleId = currentApp.bundleIdentifier, !bundleId.isEmpty {
+                        let potentialApps = NSRunningApplication.runningApplications(withBundleIdentifier: bundleId)
+                        if !potentialApps.isEmpty {
+                            appsToFetchWindowsFrom = potentialApps
+                        } else {
+                            // Fallback: if bundle ID search yields nothing, but currentApp is valid.
+                            appsToFetchWindowsFrom = [currentApp]
+                        }
+                    } else {
+                        // Fallback: no bundle ID, just use the currentApp.
+                        appsToFetchWindowsFrom = [currentApp]
+                    }
+
+                    guard !appsToFetchWindowsFrom.isEmpty else {
                         pendingShows.remove(currentAppInfo.processIdentifier)
                         return
                     }
 
-                    let appWindows = try await WindowUtil.getActiveWindows(of: app)
+                    var combinedWindows: [WindowInfo] = []
+                    for appInstance in appsToFetchWindowsFrom {
+                        let windowsForInstance = try await WindowUtil.getActiveWindows(of: appInstance)
+                        combinedWindows.append(contentsOf: windowsForInstance)
+                    }
 
                     if !pendingShows.contains(currentAppInfo.processIdentifier) {
                         return
@@ -256,7 +275,7 @@ final class DockObserver {
 
                     SharedPreviewWindowCoordinator.shared.showWindow(
                         appName: currentAppInfo.localizedName ?? "Unknown",
-                        windows: appWindows,
+                        windows: combinedWindows,
                         mouseLocation: convertedMouseLocation,
                         mouseScreen: mouseScreen,
                         dockItemElement: dockItemElement,

@@ -38,6 +38,41 @@
 </style>
 <div class="donation-link" target="_blank">☕ Support kepler.cafe at https://buymeacoffee.com/keplercafe</div>
 
+<a id="v1.11"></a>
+# [v1.11](https://github.com/ejbills/DockDoor/releases/tag/v1.11) - 2025-05-20
+
+- Updates app icon
+- Adds experimental option to show hover window above app icon labels in the dock
+![CleanShot 2025-05-20 at 15 37 57@2x](https://github.com/user-attachments/assets/5aebda35-b121-4795-9bfe-d8228d7eac70)
+- Updates translations
+- Fixes no dock preview for apps with multiple instances
+
+[Changes][v1.11]
+
+
+<a id="v1.10"></a>
+# [v1.10](https://github.com/ejbills/DockDoor/releases/tag/v1.10) - 2025-05-17
+
+- Entirely new settings design (thanks to [@apotenza92](https://github.com/apotenza92) for inspiration in settings design)
+- - ![CleanShot 2025-05-17 at 13 48 10@2x](https://github.com/user-attachments/assets/ca22de6b-de36-4515-9e85-1b16974e3308)
+- - Simplified settings and profiles for easy customization
+- - ![CleanShot 2025-05-17 at 13 48 38@2x](https://github.com/user-attachments/assets/df5734af-c630-46bf-9f8f-890de0aa4ba0)
+- - Live hover previews in the settings to make customization a breeze
+- Middle mouse click on a window preview to close it
+- Option to hide app name in window previews
+- Misc. bug fixes
+
+[Changes][v1.10]
+
+
+<a id="v1.9.1"></a>
+# [v1.9.1](https://github.com/ejbills/DockDoor/releases/tag/v1.9.1) - 2025-05-11
+
+- Fixes window dismissal container logic
+
+[Changes][v1.9.1]
+
+
 <a id="v1.9"></a>
 # [v1.9](https://github.com/ejbills/DockDoor/releases/tag/v1.9) - 2025-05-10
 
@@ -865,6 +900,9 @@ v1.0
 [Changes][releases]
 
 
+[v1.11]: https://github.com/ejbills/DockDoor/compare/v1.10...v1.11
+[v1.10]: https://github.com/ejbills/DockDoor/compare/v1.9.1...v1.10
+[v1.9.1]: https://github.com/ejbills/DockDoor/compare/v1.9...v1.9.1
 [v1.9]: https://github.com/ejbills/DockDoor/compare/v1.8...v1.9
 [v1.8]: https://github.com/ejbills/DockDoor/compare/v1.7.1...v1.8
 [v1.7.1]: https://github.com/ejbills/DockDoor/compare/v1.7...v1.7.1
